@@ -5,7 +5,7 @@ namespace UnityTableViewer.Utility {
 	public class NamingRuleUtility {
 		
 		public static string CreateAccessorClassName(string prefabName) {
-			return prefabName + "Accessor";
+			return prefabName + "DataAccessor";
 		}
 		
 		public static string CreateAccessorManagerGeneratePath(string className) {
