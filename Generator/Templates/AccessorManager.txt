@@ -1,7 +1,11 @@
 using UnityEngine;
 using UnityEditor;
-using Unity
+using UnityTableViewer.Accessor;
 
-public class {{ className }} : IAccessorManager {
-	public int test = 1;
+namespace {{ namespace }} {
+	public class {{ className }}AccessorManager : AccessorManagerBase {
+		public {{ className }}AccessorManager() {
+{{ initializeCode }}
+		}
+	}
 }
