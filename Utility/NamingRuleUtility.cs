@@ -9,7 +9,11 @@ namespace UnityTableViewer.Utility {
 		}
 		
 		public static string CreateAccessorManagerGeneratePath(string className) {
-			return AssetPathUtility.AccessorManagerGeneratePath + "/" + className + "AccessorManager.cs";
+			return AssetPathUtility.AccessorManagerGeneratePath + className + "AccessorManager.cs";
+		}
+		
+		public static string CreateDataAccessorGeneratePath(string className) {
+			return AssetPathUtility.DataAccessorGeneratePath + className + "DataAccessor.cs";
 		}
 	}
 }
