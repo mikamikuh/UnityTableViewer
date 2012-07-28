@@ -3,20 +3,30 @@ using UnityEngine;
 using System.Collections;
 using UnityTableViewer.Accessor;
 
-public class {{ className }}DataAccessor : DataAccessorBase {
-	public override Get(string key) {
-		switch(key) {
-			{{ getCases }}
-			case default:
-				throw new ArgumentException();
-		}
-	}
+namespace {{ namespace }} {
+	public class {{ className }}DataAccessor : DataAccessorBase {
+		
+		private {{ className }} data;
 	
-	public override Set(Object object, string key) {
-		switch(key) {
-			{{ setCases }}
-			case default:
-				throw new ArgumentException();
+		public {{ className }}DataAccessor() {
+			GameObject obj = GetGameObjectFromPrefab("{{ prefabPath }}.prefab");
+			data = obj.GetComponent<{{ className }}>();
+		}
+	
+		public System.Object Get(string key) {
+			switch(key) {
+{{ getCases }}
+				default:
+					throw new ArgumentException();
+			}
+		}
+		
+		public void Set(System.Object val, string key) {
+			switch(key) {
+{{ setCases }}
+				default:
+					throw new ArgumentException();
+			}
 		}
 	}
 }
