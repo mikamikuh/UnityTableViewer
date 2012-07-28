@@ -1,0 +1,22 @@
+using System;
+using UnityEngine;
+using System.Collections;
+using UnityTableViewer.Accessor;
+
+public class {{ className }}DataAccessor : DataAccessorBase {
+	public override Get(string key) {
+		switch(key) {
+			{{ getCases }}
+			case default:
+				throw new ArgumentException();
+		}
+	}
+	
+	public override Set(Object object, string key) {
+		switch(key) {
+			{{ setCases }}
+			case default:
+				throw new ArgumentException();
+		}
+	}
+}
