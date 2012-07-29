@@ -33,12 +33,8 @@ namespace UnityTableViewer.Generator {
 			target.Set("initializeCode", initializeCode);
 			
 			string folderPath = AssetPathUtility.AccessorManagerGeneratePath;
-			if(!System.IO.Directory.Exists(folderPath)) {
-				System.IO.Directory.CreateDirectory(folderPath);
-			}
-			
-			System.IO.File.WriteAllText(NamingRuleUtility.CreateAccessorManagerGeneratePath(className), target.ToString());
-			AssetDatabase.Refresh();
+			string generatePath = NamingRuleUtility.CreateAccessorManagerGeneratePath(className);
+			GenerateCode(folderPath, generatePath, target.ToString());
 		}
 	}
 }

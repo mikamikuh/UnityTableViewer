@@ -30,12 +30,8 @@ namespace UnityTableViewer.Generator {
 			target.Set("setCases", CreateSetCases());
 			
 			string folderPath = AssetPathUtility.DataAccessorGeneratePath;
-			if(!System.IO.Directory.Exists(folderPath)) {
-				System.IO.Directory.CreateDirectory(folderPath);
-			}
-			
-			System.IO.File.WriteAllText(NamingRuleUtility.CreateDataAccessorGeneratePath(className), target.ToString());
-			AssetDatabase.Refresh();
+			string generatePath = NamingRuleUtility.CreateDataAccessorGeneratePath(className);
+			GenerateCode(folderPath, generatePath, target.ToString());
 		}
 		
 		private string CreateGetCases() {
