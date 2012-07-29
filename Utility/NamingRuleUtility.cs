@@ -15,5 +15,9 @@ namespace UnityTableViewer.Utility {
 		public static string CreateDataAccessorGeneratePath(string className) {
 			return AssetPathUtility.DataAccessorGeneratePath + className + "DataAccessor.cs";
 		}
+		
+		public static string CreateDataScriptGeneratePath(string className) {
+			return AssetPathUtility.DataScriptGeneratePath + className + "Script.cs";
+		}
 	}
 }
