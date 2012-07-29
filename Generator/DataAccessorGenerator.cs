@@ -12,13 +12,13 @@ namespace UnityTableViewer.Generator {
 		string ns;
 		string className;
 		string prefabPath;
-		IList<string> variableNames;
+		IDictionary<string, string> variables;
 		
-		public DataAccessorGenerator(string ns, string className, string prefabPath, IList<string> variableNames) {
+		public DataAccessorGenerator(string ns, string className, string prefabPath, IDictionary<string, string> variables) {
 			this.ns = ns;
 			this.className = className;
 			this.prefabPath = prefabPath;
-			this.variableNames = variableNames;
+			this.variables = variables;
 		}
 		
 		public override void execute() {
@@ -41,8 +41,8 @@ namespace UnityTableViewer.Generator {
 		private string CreateGetCases() {
 			StringBuilder generateCode = new StringBuilder();
 			
-			foreach(string name in variableNames) {
-				generateCode.Append("				case \"" + name + "\": return data." + name + ";" + System.Environment.NewLine);
+			foreach(KeyValuePair<string, string> pair in variables) {
+				generateCode.Append("				case \"" + pair.Key + "\": return data." + pair.Key + ";" + System.Environment.NewLine);
 			}		
 			return generateCode.ToString();
 		}
@@ -50,8 +50,8 @@ namespace UnityTableViewer.Generator {
 		private string CreateSetCases() {
 			StringBuilder generateCode = new StringBuilder();
 			
-			foreach(string name in variableNames) {
-				generateCode.Append("				case \"" + name + "\": data." + name + " = val; break;" + System.Environment.NewLine);
+			foreach(KeyValuePair<string, string> pair in variables) {
+				generateCode.Append("				case \"" + pair.Key + "\": data." + pair.Key + " = (" + pair.Value + ")val; break;" + System.Environment.NewLine);
 			}
 			return generateCode.ToString();
 		}
