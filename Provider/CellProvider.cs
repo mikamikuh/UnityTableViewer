@@ -5,6 +5,10 @@ using System.Collections;
 
 namespace UnityTableViewer.Provider {
 	public abstract class CellProvider : ICellProvider {
+		
+		public int Count() {
+			return 0;
+		}
 
 		public string GetLabel(int col, System.Object obj) {
 			return obj.ToString();
