@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace UnityTableViewer.Provider {
 	public interface IContentProvider {
-		int RowCount { get; }
-		int ColCount { get; }
-		IList<Object> Prefabs { get; }
+		int Count { get; }
+		IList<Object> Contents { get; }
 	}
 }
