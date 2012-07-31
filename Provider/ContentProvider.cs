@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace UnityTableViewer.Provider {
 	public class ContentProvider : IContentProvider {
 		
-		private IList<Object> contents;
+		private IList<ICellProvider> contents;
 		
-		public IList<Object> Contents {
+		public IList<ICellProvider> Contents {
 			get { return this.contents; }
 		}
 		
@@ -15,7 +16,7 @@ namespace UnityTableViewer.Provider {
 		}
 		
 		public ContentProvider() {
-			contents = new List<Object>();
+			contents = new List<ICellProvider>();
 		}
 	}
 }
