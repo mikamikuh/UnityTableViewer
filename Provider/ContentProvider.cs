@@ -15,7 +15,7 @@ namespace UnityTableViewer.Provider {
 			get { return this.contents.Count; }
 		}
 		
-		public ContentProvider(List<ICellData> contents) {
+		public ContentProvider(IList<ICellData> contents) {
 			contents = this.contents;
 		}
 	}
