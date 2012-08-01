@@ -1,14 +1,15 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityTableViewer.Provider;
 
 namespace UnityTableViewer.Viewer {
-	public class UnityTableViewer {
+	public class TableViewer {
 		
 		private IContentProvider contentProvider;
 		private ICellProvider cellProvider;
 		
-		public UnityTableViewer(IContentProvider contentProvider, ICellProvider cellProvider) {
+		public TableViewer(IContentProvider contentProvider, ICellProvider cellProvider) {
 			this.contentProvider = contentProvider;
 			this.cellProvider = cellProvider;
 		}
@@ -19,8 +20,8 @@ namespace UnityTableViewer.Viewer {
 				ICellData content = contentProvider.Contents[i];
 				
 				for(int j = 0; j < cellProvider.Count; j++) {
-					Func<Object> accessor = cellProvider.GetCellAccessor(j, content.Get());
-					content.Set(accessor());
+					Func<System.Object> accessor = cellProvider.GetCellAccessor(j, content.Data);
+					content.Data =  accessor();
 				}
 				
 				GUILayout.EndHorizontal();
