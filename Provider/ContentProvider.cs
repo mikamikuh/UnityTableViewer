@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace UnityTableViewer.Provider {
 	public class ContentProvider : IContentProvider {
 		
-		private IList<ICellProvider> contents;
+		private IList<ICellData> contents;
 		
-		public IList<ICellProvider> Contents {
+		public IList<ICellData> Contents {
 			get { return this.contents; }
 		}
 		
@@ -15,8 +15,8 @@ namespace UnityTableViewer.Provider {
 			get { return this.contents.Count; }
 		}
 		
-		public ContentProvider() {
-			contents = new List<ICellProvider>();
+		public ContentProvider(List<ICellData> contents) {
+			contents = this.contents;
 		}
 	}
 }

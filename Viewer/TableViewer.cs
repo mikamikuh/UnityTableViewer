@@ -1,23 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using UnityTableViewer.Provider;
 
-namespace UnityTableViewer {
+namespace UnityTableViewer.Viewer {
 	public class UnityTableViewer {
 		
-		private IPrefabProvider provider;
+		private IContentProvider contentProvider;
+		private ICellProvider cellProvider;
 		
-		public UnityTableViewer(IPrefabProvider provider) {
-			this.provider = provider;
+		public UnityTableViewer(IContentProvider contentProvider, ICellProvider cellProvider) {
+			this.contentProvider = contentProvider;
+			this.cellProvider = cellProvider;
 		}
 		
 		public void OnGUI() {
-			for(int i = 0; i < provider.RowCount; i++) {
+			for(int i = 0; i < contentProvider.Count; i++) {
 				GUILayout.BeginHorizontal();
-				Object prefab = provider.Prefabs[i];
-				for(int j = 0; j < provider.ColCount; j++) {
-					//Component comp = prefab.GetComponent ("GeneratedClassName");
-					//comp.aaa = 1;
+				ICellData content = contentProvider.Contents[i];
+				
+				for(int j = 0; j < cellProvider.Count; j++) {
+					Func<Object> accessor = cellProvider.GetCellAccessor(j, content.Get());
+					content.Set(accessor());
 				}
+				
 				GUILayout.EndHorizontal();
 			}
 		}
