@@ -16,7 +16,7 @@ namespace UnityTableViewer.Provider {
 		}
 		
 		public ContentProvider(IList<ICellData> contents) {
-			contents = this.contents;
+			this.contents = contents;
 		}
 	}
 }
