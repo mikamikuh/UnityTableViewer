@@ -6,7 +6,7 @@ using System.Collections;
 namespace UnityTableViewer.Provider {
 	public abstract class CellProvider : ICellProvider {
 		
-		public int Count {
+		public virtual int Count {
 			get { return 0; }
 		}
 
