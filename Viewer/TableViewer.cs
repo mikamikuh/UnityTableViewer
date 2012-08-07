@@ -22,9 +22,11 @@ namespace UnityTableViewer.Viewer {
 			DrawHeader();
 			
 			for(int i = 0; i < contentProvider.Count; i++) {
-				GUILayout.BeginHorizontal();
 				ICellData content = contentProvider.Contents[i];
+								
+				GUILayout.BeginHorizontal();
 				
+				DrawNameCell(content);
 				for(int j = 0; j < cellProvider.Count; j++) {
 					string label = cellProvider.GetLabel(j, content);
 					Func<System.Object> accessor = cellProvider.GetCellAccessor( content.GetData(label) );
@@ -35,8 +37,20 @@ namespace UnityTableViewer.Viewer {
 			}
 		}
 		
+		private void DrawNameCell(ICellData data) {
+			string before = data.Name;
+			string after = "";
+			
+			after = GUILayout.TextField (data.Name);
+			
+			if(before != after) {
+				data.Name = after;
+			}
+		}
+		
 		private void DrawHeader() {
 			GUILayout.BeginHorizontal();
+			GUILayout.Label("Name");
 			foreach(string name in cellProvider.GetAllLabel()) {
 				GUILayout.Label (name);
 			}
