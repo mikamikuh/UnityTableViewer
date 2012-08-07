@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
-namespace UnityTableEditor.Provider {
+namespace UnityTableViewer.Provider {
 	
 	public class ControlProvider : IControlProvider {
 		

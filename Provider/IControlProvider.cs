@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace UnityTableEditor.Provider {
+namespace UnityTableViewer.Provider {
 	
 	public interface IControlProvider {
 		void drawControl(ControlType type, string data);

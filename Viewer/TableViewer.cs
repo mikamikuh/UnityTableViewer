@@ -7,11 +7,15 @@ namespace UnityTableViewer.Viewer {
 	public class TableViewer {
 		
 		private IContentProvider contentProvider;
-		private ICellProvider cellProvider;
+		public IContentProvider ContentProvider {
+			get{ return contentProvider; }
+			set{ contentProvider = value; }
+		}
 		
-		public TableViewer(IContentProvider contentProvider, ICellProvider cellProvider) {
-			this.contentProvider = contentProvider;
-			this.cellProvider = cellProvider;
+		private ICellProvider cellProvider;
+		public ICellProvider CellProvider {
+			get{ return cellProvider; }
+			set{ cellProvider = value; }
 		}
 		
 		public void OnGUI() {
@@ -20,8 +24,9 @@ namespace UnityTableViewer.Viewer {
 				ICellData content = contentProvider.Contents[i];
 				
 				for(int j = 0; j < cellProvider.Count; j++) {
-					Func<System.Object> accessor = cellProvider.GetCellAccessor(j, content.Data);
-					content.Data =  accessor();
+					string label = cellProvider.GetLabel(j, content);
+					Func<System.Object> accessor = cellProvider.GetCellAccessor( content.GetData(label) );
+					content.SetData (accessor(), label);
 				}
 				
 				GUILayout.EndHorizontal();

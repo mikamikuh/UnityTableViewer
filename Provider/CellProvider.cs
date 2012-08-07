@@ -10,11 +10,11 @@ namespace UnityTableViewer.Provider {
 			get { return 0; }
 		}
 
-		public string GetLabel(int col, System.Object obj) {
+		public virtual string GetLabel(int col, System.Object obj) {
 			return obj.ToString();
 		}
 		
-		public Func<System.Object> GetCellAccessor(int col, System.Object obj) {
+		public Func<System.Object> GetCellAccessor(System.Object obj) {
 			if(obj.GetType() == typeof(string)) {
 				return () => { return EditorGUILayout.TextField((string)obj, GUILayout.ExpandWidth(true)); };
 			} else if(obj.GetType() == typeof(int)) {
