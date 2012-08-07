@@ -14,6 +14,10 @@ namespace UnityTableViewer.Provider {
 			return obj.ToString();
 		}
 		
+		public virtual string[] GetAllLabel() {
+			return null;
+		}
+		
 		public Func<System.Object> GetCellAccessor(System.Object obj) {
 			if(obj.GetType() == typeof(string)) {
 				return () => { return EditorGUILayout.TextField((string)obj, GUILayout.ExpandWidth(true)); };

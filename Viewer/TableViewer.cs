@@ -19,6 +19,8 @@ namespace UnityTableViewer.Viewer {
 		}
 		
 		public void OnGUI() {
+			DrawHeader();
+			
 			for(int i = 0; i < contentProvider.Count; i++) {
 				GUILayout.BeginHorizontal();
 				ICellData content = contentProvider.Contents[i];
@@ -31,6 +33,14 @@ namespace UnityTableViewer.Viewer {
 				
 				GUILayout.EndHorizontal();
 			}
+		}
+		
+		private void DrawHeader() {
+			GUILayout.BeginHorizontal();
+			foreach(string name in cellProvider.GetAllLabel()) {
+				GUILayout.Label (name);
+			}
+			GUILayout.EndHorizontal();
 		}
 	}
 }
