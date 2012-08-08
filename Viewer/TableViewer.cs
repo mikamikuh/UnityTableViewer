@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using UnityTableViewer.Provider;
 
@@ -44,7 +45,7 @@ namespace UnityTableViewer.Viewer {
 			string before = data.Name;
 			string after = "";
 			
-			after = GUILayout.TextField (data.Name);
+			after = EditorGUILayout.TextField (data.Name, GUILayout.ExpandWidth (true));
 			
 			if(before != after) {
 				data.Name = after;
