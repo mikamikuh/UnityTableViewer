@@ -27,11 +27,14 @@ namespace UnityTableViewer.Viewer {
 				GUILayout.BeginHorizontal();
 				
 				DrawNameCell(content);
+				
 				for(int j = 0; j < cellProvider.Count; j++) {
 					string label = cellProvider.GetLabel(j, content);
 					Func<System.Object> accessor = cellProvider.GetCellAccessor( content.GetData(label) );
 					content.SetData (accessor(), label);
 				}
+				
+				DrawDeleteButton(content);
 				
 				GUILayout.EndHorizontal();
 			}
@@ -45,6 +48,12 @@ namespace UnityTableViewer.Viewer {
 			
 			if(before != after) {
 				data.Name = after;
+			}
+		}
+		
+		private void DrawDeleteButton(ICellData data) {
+			if(GUILayout.Button ("-")) {
+				data.Delete();
 			}
 		}
 		
