@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using UnityTableViewer.Provider;
-
 
 public class TableViewer
 {
